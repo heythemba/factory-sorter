@@ -46,7 +46,7 @@ Includes a live camera stream, production counters, adjustable tolerance, and qu
 
 ## 🚀 Quick Start
 
-```bash
+
 # 1) Create & activate a virtual env (Windows)
 python -m venv .venv
 .\.venv\Scripts\activate
