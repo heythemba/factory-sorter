@@ -5,8 +5,8 @@
 #include <ESP8266WebServer.h>
 #include <Servo.h>
 
-const char* ssid = "TUNISIETELECOM-2.4G-GVz3";
-const char* pass = "t96cUyXC";
+const char* ssid = "Your_SSID";
+const char* pass = "Your_PASSWORD";
 
 ESP8266WebServer server(80);
 
