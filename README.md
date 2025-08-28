@@ -48,15 +48,20 @@ Includes a live camera stream, production counters, adjustable tolerance, and qu
 
 
 # 1) Create & activate a virtual env (Windows)
+```
 python -m venv .venv
 .\.venv\Scripts\activate
+```
 
 # 2) Install deps
+```
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-
+```
 # 3) Run the app
-python app_detect_dashboard.py.
+```
+python app_detect_dashboard.py.`
+```
 
 🧭 Using the Dashboard
 
