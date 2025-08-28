@@ -23,3 +23,37 @@ Includes a live camera stream, production counters, adjustable tolerance, and qu
 
 ## 🧱 Project Structure (suggested)
 
+├── app_detect_dashboard.py # Main Flask app
+├── requirements.txt # Python deps
+├── README.md # This file
+├── .gitignore
+├── esp8266/
+│ └── esp8266_controller.ino # Matching ESP8266 firmware (HTTP endpoints)
+└── docs/
+└── screenshot-dashboard.png # Add your screenshot(s)
+
+
+---
+
+## ✅ Requirements
+
+- **Python 3.9+** (tested on Windows; works elsewhere too)
+- Webcam(s) or USB camera(s)
+- ESP8266 (NodeMCU, etc.) with the provided Arduino sketch
+- Network access between the PC and the ESP8266
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# 1) Create & activate a virtual env (Windows)
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# 2) Install deps
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+# 3) Run the app
+python app_detect_dashboard.py
