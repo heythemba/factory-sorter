@@ -56,4 +56,94 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # 3) Run the app
-python app_detect_dashboard.py
+python app_detect_dashboard.py.
+
+🧭 Using the Dashboard
+
+Expected Parameters panel:
+
+Set Expected Shape, Expected Area (px²), and Tolerance (±px²), then Save
+
+Camera Index: enter 0 for built-in, 1/2 for USB cams → click Switch
+
+Production Stats: live counters for Total / Good / Bad; Reset to clear
+
+Last result badge turns green (Good) or red (Bad)
+
+Cooldown between detections is 2 seconds by default (configurable by env var)
+
+🔌 ESP8266 Firmware
+
+A minimal Arduino sketch exposes HTTP endpoints used by the Python app:
+
+GET /servo?angle=0..180
+
+GET /led?color=red|green&state=on|off
+
+GET /log?msg=... → prints to Serial
+
+Important wiring notes:
+
+Set servo to 90° in setup() (neutral start position).
+
+Power the servo from a proper 5V supply, not from the 3.3V pin (common GND with ESP).
+
+Use resistors (220–330Ω) for LEDs.
+
+Place your sketch in esp8266/esp8266_controller.ino.
+(If you want, include the full code in this repo so others can flash it easily.)
+
+🔧 Troubleshooting
+
+Camera not opening (Windows):
+
+App uses cv2.CAP_DSHOW for indices. Try other indices: 0, 1, 2.
+
+Ensure no other program is using the webcam.
+
+Double counting: increase DETECTION_COOLDOWN_S (e.g. 2.5 or 3.0).
+
+No contours: raise MIN_CONTOUR_AREA (e.g. 1200) or improve lighting/contrast.
+
+ESP not reacting: confirm ESP IP matches ESP8266_BASE_URL and test in a browser:
+
+http://<ESP-IP>/servo?angle=90
+
+http://<ESP-IP>/led?color=red&state=on
+
+📝 .gitignore (recommended)
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+📸 Screenshots
+
+Add screenshots in docs/ and update references above.
+
+Dashboard home: docs/screenshot-dashboard.png
+
+Good piece example: docs/screenshot-good.png
+
+Bad piece example: docs/screenshot-bad.png
+
+📄 License
+
+MIT (or your preferred license).
+
+🙌 Credits
+
+OpenCV for image processing
+
+Flask for the web app
+
+Bootstrap for styling
+
+ESP8266 for control I/O
